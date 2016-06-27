@@ -4,6 +4,7 @@ from glue.utils.qt.widget_properties import (connect_bool_button, connect_value,
                                              connect_current_combo)
 from glue.utils.qt.colors import connect_color
 
+
 class State(object):
 
     def __init__(self):

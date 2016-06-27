@@ -37,3 +37,6 @@ local to this viewer.
 To run the example, simply do:
 
     python example.py
+
+Note that the ``helpers.py`` file is not specific to this viewer and will be
+code shared by the different viewers.
