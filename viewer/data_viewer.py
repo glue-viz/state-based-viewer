@@ -2,9 +2,9 @@ from glue.viewers.common.qt.data_viewer import DataViewer
 from glue.viewers.common.qt.mpl_widget import MplWidget
 from glue.external.echo import CallbackProperty
 
-from layer_artist import ScatterLayerArtist
-from options_widget import ScatterOptionsWidget
-from helpers import State
+from .layer_artist import ScatterLayerArtist
+from .options_widget import ScatterOptionsWidget
+from .helpers import State
 
 
 class ScatterViewerState(State):

@@ -3,7 +3,7 @@ import os
 from glue.external.qt import QtGui
 from glue.utils.qt import load_ui
 
-from helpers import autoconnect_qt
+from .helpers import autoconnect_qt
 
 
 class ScatterLayerStyleEditor(QtGui.QWidget):

@@ -2,8 +2,8 @@ from glue.core.layer_artist import LayerArtistBase
 from glue.external.echo import CallbackProperty, add_callback
 from glue.utils import nonpartial
 
-from layer_style_editor import ScatterLayerStyleEditor
-from helpers import State
+from .layer_style_editor import ScatterLayerStyleEditor
+from .helpers import State
 
 
 class ScatterLayerState(State):

@@ -4,7 +4,7 @@ from glue.external.qt import QtGui
 from glue.utils.qt import load_ui
 from glue.core.qt.data_combo_helper import ComponentIDComboHelper
 
-from helpers import autoconnect_qt
+from .helpers import autoconnect_qt
 
 
 class ScatterOptionsWidget(QtGui.QWidget):

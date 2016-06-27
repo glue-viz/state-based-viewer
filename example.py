@@ -2,7 +2,7 @@ from glue.external.qt import get_qapp, QtGui
 from glue.core.session import Session
 from glue.core import Data, DataCollection
 
-from data_viewer import ScatterViewer
+from viewer import ScatterViewer
 
 data = Data(x=[1, 2, 3], y=[1, 3, 2])
 dc = DataCollection([data])
