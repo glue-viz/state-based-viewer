@@ -10,6 +10,7 @@ from helpers import State
 class ScatterViewerState(State):
     xatt = CallbackProperty()
     yatt = CallbackProperty()
+    layers = CallbackProperty(())
 
 
 class ScatterViewer(DataViewer):
@@ -20,6 +21,9 @@ class ScatterViewer(DataViewer):
 
         # Use MplWidget to set up a Matplotlib canvas inside the Qt window
         self.mpl_widget = MplWidget()
+        self._axes = self.mpl_widget.canvas.figure.add_subplot(1, 1, 1)
+        self._axes.set_xlim(-10, 10)
+        self._axes.set_ylim(-10, 10)
         self.setCentralWidget(self.mpl_widget)
 
         # Set up the state which will contain everything needed to represent
@@ -31,42 +35,22 @@ class ScatterViewer(DataViewer):
         self.options = ScatterOptionsWidget(viewer_state=self.viewer_state,
                                             session=session)
 
+        self.viewer_state.connect_all(self.update)
+
     def add_data(self, data):
 
-        self.options.add_data(data)
+        if data in self.viewer_state.layers:
+            return
+
+        # Add data to the list of layers
+        # TODO: make callback iterable which callbacks when changed to avoid
+        # using tuples here - this is messy at the moment, and removing is not
+        # going to be much fun.
+        self.viewer_state.layers += (data,)
 
         # Create scatter layer artist and add to container
-        layer = ScatterLayerArtist(data, self.mpl_widget, self.viewer_state)
-        layer.zorder = 0
+        layer = ScatterLayerArtist(data, self._axes, self.viewer_state)
         self._layer_artist_container.append(layer)
 
     def options_widget(self):
         return self.options
-
-
-if __name__ == "__main__":
-
-    from glue.external.qt import get_qapp, QtGui
-    from glue.core.session import Session
-    from glue.core import Data, DataCollection
-
-    data = Data(x=[1, 2, 3], y=[1, 3, 2])
-    dc = DataCollection([data])
-
-    app = get_qapp()
-
-    session = Session(application=app, data_collection=dc)
-
-    viewer = ScatterViewer(session)
-
-    window = QtGui.QWidget()
-    layout = QtGui.QHBoxLayout()
-    layout.addWidget(viewer.options_widget())
-    layout.addWidget(viewer)
-    window.setLayout(layout)
-
-    window.show()
-
-    viewer.add_data(data)
-
-    app.exec_()

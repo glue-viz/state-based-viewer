@@ -7,20 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>163</width>
-    <height>75</height>
+    <height>84</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_y">
-     <property name="text">
-      <string>y</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label_x">
      <property name="text">
@@ -28,11 +21,31 @@
      </property>
     </widget>
    </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="combo_yatt"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_y">
+     <property name="text">
+      <string>y</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
     <widget class="QComboBox" name="combo_xatt"/>
    </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="combo_yatt"/>
+   <item row="2" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
